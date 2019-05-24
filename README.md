@@ -21,7 +21,7 @@ terraform workspace new testing
 terraform plan
 ```
 
-actual behavior:
+previous behavior:
 
 ```
 Refreshing Terraform state in-memory prior to plan...
@@ -48,3 +48,22 @@ Error: Error running plan: 3 error(s) occurred:
 
 ```
 
+After the fix
+
+```
+Refreshing Terraform state in-memory prior to plan...
+The refreshed state will be used to calculate this plan, but will not be
+persisted to local or remote state storage.
+
+data.terraform_remote_state.fromasg: Refreshing state...
+data.aws_security_group.asg: Refreshing state...
+
+------------------------------------------------------------------------
+
+No changes. Infrastructure is up-to-date.
+
+This means that Terraform did not detect any differences between your
+configuration and real physical resources that exist. As a result, no
+actions need to be performed.
+
+```
